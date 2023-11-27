@@ -1,0 +1,1134 @@
+@charset "UTF-8";
+@use"sass:math";
+
+
+
+$red:red;
+
+$breakpoints: (
+	'tb': 'screen and ( min-width: 601px  )',
+	'pc': 'screen and ( min-width: 767px  )',
+	'wide': 'screen and ( min-width: 1001px )',
+	'full': 'screen and ( min-width: 1201px )',
+	'pc2': 'screen and ( max-width: 767px  )'
+);
+
+@mixin mp( $breakpoint: pc ) {
+	@media #{ map-get( $breakpoints, $breakpoint ) } {
+		@content;
+	}
+}
+
+@mixin ma( $breakpoint:full ) {
+	@media #{ map-get( $breakpoints, $breakpoint ) } {
+		@content;
+	}
+}
+
+
+@mixin mp( $breakpoint: pc ) {
+	@media #{ map-get( $breakpoints, $breakpoint ) } {
+		@content;
+	}
+}
+
+@mixin mq( $breakpoint: pc2 ) {
+	@media #{ map-get( $breakpoints, $breakpoint ) } {
+		@content;
+	}
+}
+
+$btnWidth:20px;
+$btnHeight: 1pc;
+
+
+/* 共通部分
+------------------------------- */
+html {
+    
+  font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+
+
+  font-family: "Noto Sans JP", MyYuGothicM, YuGothic, -apple-system, BlinkMacSystemFont, "Hiragino kaku Gothic ProN", Meiryo, Verdana, arial, helvetica, sans-serif;
+  font-size: 16px;
+  font-size: 1rem;
+  color: #121212;
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  line-height: 1.7;
+  -ms-overflow-style: none; /* IE, Edge 対応 */
+  scrollbar-width: none;    /* Firefox 対応 */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari 対応 */
+  }
+  
+
+}
+
+.Header {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+     background: #FFF;
+  z-index: 1100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  vertical-align: bottom;
+  &__title{
+    margin: 0 0 0 21px;
+    width: 160px;
+  &__title p img{
+  height: 33px;
+  width: auto;
+  }
+}
+}
+
+/*.Header .Header__title {
+  margin: 0 0 0 21px;
+  width: 160px;
+}*/
+
+.Header .Header__title p img {
+  height: 33px;
+  width: auto;
+}
+ 
+.Header .Header__title p a span {
+  margin-left: 16px;
+  white-space: nowrap;
+  font-size: 13.7px;
+  font-weight: 900;
+}
+
+.Header .Header__title p a:visited {
+  color: #131D34;
+  text-decoration: none;
+}
+
+.Header .Header__title p a {
+  line-height: 1.3;
+  font-weight: 900;
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+
+  
+
+
+
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header .header__tittle p a:hover{
+  color: #131d34;
+  text-decoration: none;
+}
+
+.Header .Header__title p a {
+  line-height: 1.3;
+  font-weight: 900;
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  
+}
+
+
+
+
+.Header__link{
+ display: flex;
+ justify-content: flex-end;
+ letter-spacing: -.4em;
+
+}
+
+
+.strong {
+  font-weight: bolder;
+  font-size: 1.8rem;
+}
+
+
+.header__tittle p a:visited{
+  color:#131d34;
+  text-decoration: none;
+}
+
+.header__tittle p a{
+  line-height: 1.3;
+  font-weight: 900;
+  height: 70px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+
+.Nav{
+  background-color: #FFF;
+}
+
+ul.ddmenu ul {
+    /* ★1:標準では非表示にする */
+  margin: 30px;         /* ★2:サブメニュー外側の余白(ゼロ) */
+  padding: 0px;        /* ★3:サブメニュー内側の余白(ゼロ) */
+  position: absolute;  /* ★4:絶対配置にする */
+}
+
+/* -------------------- */
+/* ▼メニューバーの装飾 */
+/* -------------------- */
+
+
+/* -------------------------- */
+/* ▼メインメニュー項目の装飾 */
+/* -------------------------- */
+ul.ddmenu li {
+            
+  display:  inline-block; /* ★1:横並びに配置する */
+  letter-spacing: normal; 
+  list-style-type: none;  /* ★2:リストの先頭記号を消す */
+  position: relative;    /* ★3:サブメニュー表示の基準位置にする */
+  top:0px;
+  left:0px;
+  height: 70px;
+  margin-right:0px;
+  margin-left: 0px;
+  line-height: 0;
+
+}
+ 
+ul.ddmenu ul li {   /* ※A */
+  width: 230px;               /* サブメニュー1項目の横幅 */
+   
+}
+
+
+
+  
+
+ul.ddmenu a {
+   /* メニュー項目の背景色 */
+  color: black;              /* メニュー項目の文字色 */
+  line-height: 70px;         /* メニュー項目のリンクの高さ */   
+  text-decoration: none;     /* メニュー項目の装飾(下線を消す) */
+  font-weight: bold;         /* 太字にする */
+  display: block;            /* ★4:項目内全域をリンク可能にする */
+  padding: 0 15px 0 15px;
+  font-weight: normal;
+  
+}
+
+
+
+ul.ddmenu a:hover {
+  background-color: #D4f1f8;/* メニュー項目にマウスが載ったときの背景色 */
+  color: black;            /* メニュー項目にマウスが載ったときの文字色 */
+  }
+
+
+ul.ddmenu ul {
+   transform: scaleY(0);/*デフォルトでは非表示の状態にしておく*/
+  transform-origin: center top;/*変形を適応する基準をtopとする*/
+ /*表示の変化を0.3秒に指定*/
+  width: 100%;
+  position: absolute;
+  top: 40px;
+  left: -30px;
+  background-color: #E9F8FB ;
+  &:hover{
+    color: #2498B3;
+    background-color: #FFF;
+   
+  }
+}
+
+.sab__nav{
+  background-color: #E9F8FBFF;
+}
+
+
+
+
+ul.ddmenu {
+  font-size: 16px;
+  margin: 0px;               /* メニューバー外側の余白(ゼロ) */
+  padding: 0px 0px 0px 15px; /* メニューバー内側の余白(左に15px) */
+  background-color: #FFF;
+}
+
+ul.ddmenu li:hover ul {
+  transform: scaleY(1);/*Gナビメニューにホバーしたら表示*/
+  transition: all .3s;
+}
+
+.main{
+  padding: 70px 0px 0px 0px;
+}
+
+
+.TopHead{
+background-color: transparent;
+background-image: url(/images/bg-hero3.webp);
+background-position-x: center;
+background-position-y: center;
+background-size: initial;
+background-attachment: initial;
+background-origin: initial;
+background-clip: initial;
+height: 650px;
+background-size: cover;
+background-attachment: fixed;
+position: relative;
+@include mq{
+  height: 320px;
+}
+}
+
+.TopHead__layer{
+  position: absolute;
+  top: o;
+  width: 100%;
+  height: 100%;
+
+}
+
+.TopHead__layer1{
+  background-image: url(/images/bg-hero1.webp) ,
+                    url(/images/bg-hero2.webp);
+  background-position-x: center;
+    background-position-y: center;
+    background-size: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial; 
+    background-color: transparent;
+  z-index: 200;
+  padding: 80px 0px 0px 0px ;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 200; 
+  background-repeat: no-repeat;
+  @include mq{
+    background-size: cover;
+    align-items: flex-end;
+    background-position-y: -30px;
+   
+  }
+
+
+}
+
+.TopHead__body{
+  background-color: #FFF;
+  max-width: 530px;
+  border-radius:  10px;
+  padding: 43px 40px 19px 40px;
+  text-align: center;
+  line-height:1.7;
+
+  @include mq{
+    width: 100%;
+    max-width: 100%;
+    padding: 9px 0 13px 0;
+    border-radius: 0;
+  }
+  }
+
+
+.btn a{
+  border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: rgb(195, 195, 195);
+    border-right-color: rgb(195, 195, 195);
+    border-bottom-color: rgb(195, 195, 195);
+    border-left-color: rgb(195, 195, 195);
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+
+    
+}
+
+.TopHead img{
+  width: 280px;
+  height: auto;
+}
+
+.TopHead p{
+  margin: 1.3em 0 0.5em;
+  font-weight: 700;
+}
+
+.ten{
+  background-color: #2498B3;
+  color: #FFF;
+}
+
+.TopHead__title{
+  @include mq{
+    display: none;
+  }
+}
+
+.TopHead__body p{
+  @include mq{
+    margin: 0.7em 0;
+    font-size: 13px;
+  }
+}
+
+.TopHead__body p.btn.btn--big a{
+  background-color:#2498B3 ;
+  border-color: #2498B3;
+  color: #FFF;
+  font-size: 18px;
+  padding: 24px 37px;
+  border-radius: 5px;
+  line-height: 1;
+  display: inline-block;
+  font-weight: 700;
+  margin: 0.5em 0 0;
+  transition: all .5s;
+  @include mq{
+    margin: 0;
+    padding: 12px 18px;
+    font-size: 16px;
+  }
+}
+
+.Sec{
+  background-color: #121212;
+  padding: 4em 0 4em 0;
+}
+
+.Recommendation{ 
+  display: flex;
+  position: relative;
+  z-index: 1000;
+  margin-top: -263px;
+  justify-content: center;
+  color: #FFF;
+   @include mq{
+    flex-direction: column;
+    margin-top: 0;
+    align-items: center;
+   }
+}
+
+.Recommendation__entry{
+  margin: 0 50px;
+  width: 229px;
+  @include mq{
+    margin-bottom: 2.5em;
+    width: auto;
+  }
+}
+
+.Recommendation__title{
+  text-align: center ;
+}
+
+.Recommendation__icon{
+  color: #121212;
+  font-size: 1000px;
+}
+
+.Recommendation__title .Recommendation__icon{
+  font-size: 100px;
+  font-weight: 300;
+  
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+}
+
+
+
+.Recommendation__title p{
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.Recommendation__body p{
+  margin: 0.5em 0 0 0 ;
+  font-weight: 700;
+ }
+
+.Recommendation__title .Recommendation__icon {
+  border:black 6px solid;
+  border-radius: 50%;
+  width: 230px;
+  height: 230px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+ 
+ @media(max-width:1200px) {
+ 
+  .Header {
+    height: 50px;
+  }
+  
+  .Header .Header__title p a {
+    height: 50px;
+  }
+
+  .header__tittle p a{
+    height: 50px;
+  }
+
+  .Header__link{
+    display: none;
+  }
+
+  ul.ddmenu li {      
+    height: 50px;
+  }
+  
+  ul.ddmenu a {
+    line-height: 50px;
+    display: none;
+    
+  }   
+
+  ul{
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  
+  }
+
+  .main{
+    padding: 50px 0px 0px 0px;
+  }
+ }
+
+ @media (max-width:1280px){
+  .Header .Header__title p a span {
+      display:none;
+    }
+ }
+
+
+
+  
+.p-hamburger{
+  z-index: 300;
+  width:    50px;
+  height:   50px;
+  background-color:#fff;
+  position: relative;
+  right: 0px;
+  float: right;
+  
+
+  @include ma{ 
+      display: none;
+  
+  }
+  &.is-open{
+    background-color: #2498B3;
+  }
+
+  &::before,
+  &::after{
+    content: "";
+    height: 2px;
+    width:  23px;
+    background: #2498B3;
+    position: absolute;
+    left: calc(50% - math.div(#{20px},2));
+    display: block;
+    transition: transform 0.2s;
+  }
+
+  &::before{
+    top: 15px;
+  }
+  &::after{
+    top: 35px;
+  }
+
+
+
+  
+  span{
+    width: 23px;
+    height: 2px;
+    font-size: 0px;
+    background:#2498B3;
+    background-size: auto $btnHeight;
+    position: absolute;
+    left: calc(50% - math.div(#{$btnWidth},2));
+    top:50%;
+    transition: 0.2s;
+
+  }
+  &.is-open{
+
+    
+    &::before{
+      transform: rotate(45deg);
+      top: 24px;
+      background-color:#fff
+      
+    }
+    &::after{
+      transform: rotate(-45deg);
+      top: 24px;
+      background-color:#fff
+    }
+    span{
+      background: none;
+    } 
+
+    
+    
+  body.is-open{
+    position: fixed;
+  }
+}
+}
+
+.body{
+  overflow-x: hidden;
+}
+
+
+
+.span{
+    padding: 15px;
+    color: #fff;
+    font-size: 20px;
+    background: #2073c8;
+    position: relative;
+    
+    
+
+}
+
+
+
+
+.test{
+  padding: 10px 10px 10px 10px;
+  width: 100vw;
+  display: flex;
+  height: 47.188px;
+  &:hover{background:linear-gradient(to left, 	#F7F7F7 0, 	#F7F7F7 50px, #F3FAFB 50px, #F3FAFB 100%);
+}
+}
+.subject{
+  padding: 10px 10px 10px 10px;
+  height: 47.188px;
+  width: 100vw;
+  display: flex;
+  &:hover{background:linear-gradient(to left, 	#F7F7F7 0, 	#F7F7F7 50px, #F3FAFB 50px, #F3FAFB 100%);
+  }
+}
+.asz{
+  padding: 10px 10px 10px 10px;
+  width: 100vw;
+  display: flex;
+  height: 47.188px;
+  &:hover{background:linear-gradient(to left, 	#F7F7F7 0, 	#F7F7F7 50px, #F3FAFB 50px, #F3FAFB 100%);
+  }
+
+}
+.menu-a{
+  padding: 10px 10px 10px 10px;
+  width: 100vw;
+  display: flex;
+  
+  height: 47.188px;
+  &:hover{background:linear-gradient(to left, 	#F7F7F7 0, 	#F7F7F7 50px, #F3FAFB 50px, #F3FAFB 100%);
+  }
+}
+.menu-b{
+  padding: 10px 10px 10px 10px;
+  width: 100vw;
+  display: flex;
+  height: 47.188px;
+  &:hover{background:linear-gradient(to left, 	#F7F7F7 0, 	#F7F7F7 50px, #F3FAFB 50px, #F3FAFB 100%);
+  }
+}
+.menu-c{
+  padding: 10px 10px 10px 10px;  width: 100vw;
+  display: flex;
+  height: 47.188px;
+  &:hover{background:linear-gradient(to left, 	#F7F7F7 0, 	#F7F7F7 50px, #F3FAFB 50px, #F3FAFB 100%);
+  }
+}
+.dropmenu{
+  padding: 10px 10px 10px 25px;
+  position: relative;
+  //top: 4px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 47.188px;
+  color: #131D34;
+  font-weight: normal;
+
+  &:hover{
+    background-color: #F3FAFB;
+  }
+}
+
+.list{
+  height: 0;
+  text-align: left;
+  overflow: hidden;
+  transition: all 0.3s;
+  background-color: #fff;
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  width: 100vw;
+  font-weight: 700;
+  
+  @include mp{ 
+    display: none;
+}
+}
+
+
+
+.sub--list{
+  
+  height: 0;
+  display: flex;
+  overflow: hidden;
+  &.is-open{transition: all 0.3s
+  }
+}
+
+.sub---list{
+  height: 0;
+  display: flex;
+  overflow: hidden;
+  &.is-open{transition: all 0.3s
+  }
+}
+
+.sub----list{
+  height: 0;
+  display: flex;
+  overflow: hidden;
+  &.is-open{transition: all 0.3s
+}
+}
+
+.sub-----list{
+  height: 0;
+  display: flex;
+  overflow: hidden;
+  &.is-open{transition: all 0.3s
+}
+}.sub------list{
+  height: 0;
+  display: flex;
+  overflow: hidden;
+  &.is-open{transition: all 0.3s
+}
+}
+
+.sublist-a{
+  height: 0;
+  display: flex;
+  overflow: hidden;
+  &.is-open{transition: all 0.3s
+}
+}.sublist-B{
+  height: 0;
+  display: flex;
+  overflow: hidden;
+  &.is-open{transition: all 0.3s
+}
+}.sublist-c{
+  height: 0;
+  display: flex;
+  overflow: hidden;
+  &.is-open{transition: all 0.3s
+}
+}.sublist-d{
+  height: 0;
+  display: flex;
+  overflow: hidden;
+  &.is-open{transition: all 0.3s
+}
+}.sublist-e{
+  height: 0;
+  display: flex;
+  overflow: hidden;
+  &.is-open{transition: all 0.3s
+}
+}.sublist-f{
+  height: 0;
+  display: flex;
+  overflow: hidden;
+  &.is-open{transition: all 0.3s
+}
+}
+.sublist-g{
+  height: 0;
+  display: flex;
+  overflow: hidden;
+  &.is-open{transition: all 0.3s
+}
+}
+
+.submenu-a{
+  height: 0;
+  
+  overflow: hidden;
+  &.is-open{transition: all 0.3s
+}
+}
+
+.submenu-b{
+  height: 0;
+  
+  overflow: hidden;
+  &.is-open{transition: all 0.3s
+}
+}
+
+.submenu-c{
+  height: 0;
+  
+  overflow: hidden;
+  &.is-open{transition: all 0.3s
+}
+}
+
+
+
+.first{
+  position: relative;
+  top:0%;
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: #121212;
+  cursor: pointer;
+ 
+
+}
+
+.first::before,
+.first::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  background-color: #121212;
+}
+
+
+.first::before {
+  right: 13px;
+  width: 24px;
+  height: 2px;
+  margin-top: -1px;
+}
+
+.first::after {
+  right: 24px;
+  width: 2px;
+  height: 24px;
+  margin-top: -12px;
+}
+
+.first:hover::before {
+  width: 24; /* 任意の長さに調整 */
+}
+
+.first:hover::after {
+  height: 0px; /* 任意の長さに調整 */
+}
+
+
+
+.second{
+  position: relative;
+  top:0%;
+  display:block;
+  width: 100%;
+  text-decoration: none;
+  color: #121212;
+  cursor: pointer;
+
+
+
+&::before,
+&::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  background-color: #121212;
+}
+
+
+&::before {
+  right: 13px;
+  width: 24px;
+  height: 2px;
+  margin-top: -1px;
+}
+
+&::after {
+  right: 24px;
+  width: 2px;
+  height: 24px;
+  margin-top: -12px;
+}
+
+&:hover::before {
+  width: 24; /* 任意の長さに調整 */
+}
+
+&:hover::after {
+  height: 0px; /* 任意の長さに調整 */
+}
+}
+
+.third{
+  position: relative;
+  top:0%;
+  display: inline-block;
+  width: 100%;
+  text-decoration: none;
+  color: #121212;
+  cursor: pointer;
+
+
+&::before,
+&::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  background-color: #121212;
+}
+
+
+&::before {
+  right: 13px;
+  width: 24px;
+  height: 2px;
+  margin-top: -1px;
+}
+
+&::after {
+  right: 24px;
+  width: 2px;
+  height: 24px;
+  margin-top: -12px;
+}
+
+&:hover::before {
+  width: 24; /* 任意の長さに調整 */
+}
+
+&:hover::after {
+  height: 0px; /* 任意の長さに調整 */
+}
+}
+
+.fourth{
+  position: relative;
+  top:0%;
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: #121212;
+  cursor: pointer;
+
+
+&::before,
+&::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  background-color: #121212;
+}
+
+
+&::before {
+  right: 13px;
+  width: 24px;
+  height: 2px;
+  margin-top: -1px;
+}
+
+&::after {
+  right: 24px;
+  width: 2px;
+  height: 24px;
+  margin-top: -12px;
+}
+
+&:hover::before {
+  width: 24; /* 任意の長さに調整 */
+}
+
+&:hover::after {
+  height: 0px; /* 任意の長さに調整 */
+}
+}
+
+
+.none{
+  position: relative;
+  top:0%;
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: #121212;
+  cursor: pointer;
+
+}
+
+.fifth{
+  position: relative;
+  top:0%;
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: #121212;
+  cursor: pointer;
+
+
+&::before,
+&::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  background-color: #121212;
+}
+
+
+&::before {
+  right: 13px;
+  width: 24px;
+  height: 2px;
+  margin-top: -1px;
+}
+
+&::after {
+  right: 24px;
+  width: 2px;
+  height: 24px;
+  margin-top: -12px;
+}
+
+&:hover::before {
+  width: 24; /* 任意の長さに調整 */
+}
+
+&:hover::after {
+  height: 0px; /* 任意の長さに調整 */
+}
+}
+
+.ten p{
+  background-color: #2498B3;
+  color: #FFF;
+  font-weight: 700;
+  &:hover{
+    background-color: #2498B3;
+  }
+} 
+
+
+.mass{
+  background-color: #2498B3; 
+  &:hover{
+  background-color: #2498B3!important;}
+  }
+
+/*.plus {
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+  margin-right: auto;
+  margin-left: auto;
+  color: black;
+  background-color: #fff;
+  padding: 20px 10px;
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  &::before,&::after  {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background-color: black;
+  position: absolute;
+  right: 0%;
+  top: 50%;
+  transform: translateY(-50%);
+  //transition: opacity 1s;
+}
+
+&::after {
+  transform: translateY(-50%) rotate(90deg);
+  //transition: transform 1s;
+}
+&.show::before {
+  opacity: 0;
+}
+&.show::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+}*/
